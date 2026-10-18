@@ -13,7 +13,6 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader, SiteFooter } from "@/components/site";
-import { Intro } from "@/components/intro";
 import { MotionConfig } from "framer-motion";
 
 function NotFoundComponent() {
@@ -126,7 +125,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <MotionConfig reducedMotion="user">
-      <Intro />
+      
       <SiteHeader />
       <main className="min-h-[60vh] bg-background">
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
