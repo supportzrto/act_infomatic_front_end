@@ -1,0 +1,4 @@
+- [x] Refine the two homepage pathways with restrained focus, hover, and reveal motion.
+- [x] Replace the oversized process track with a connected five-stage timeline.
+- [x] Refine the six editorial industry rows with distinct interactive diagrams.
+- [x] Verify desktop, mobile, keyboard, reduced motion, and existing links.

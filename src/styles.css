@@ -1,0 +1,219 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * "THE NETWORK IS ALIVE" design system.
+ * Midnight surfaces, electric lime signal, warm editorial paper.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-lime: var(--lime);
+  --color-paper: var(--paper);
+  --color-paper-ink: var(--paper-ink);
+  --color-paper-muted: var(--paper-muted);
+  --color-paper-line: var(--paper-line);
+  --color-brand: var(--brand);
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+  --ink: oklch(0.13 0.018 262);
+  --navy: oklch(0.2 0.055 258);
+  --lime: oklch(0.92 0.22 124);
+  --paper: oklch(0.965 0.013 85);
+  --paper-ink: oklch(0.17 0.02 262);
+  --paper-muted: oklch(0.45 0.02 262);
+  --paper-line: oklch(0.17 0.02 262 / 14%);
+  --brand: oklch(0.4 0.12 252); /* from original logo blue */
+
+  --background: var(--ink);
+  --foreground: var(--paper);
+  --card: oklch(0.17 0.03 260);
+  --card-foreground: var(--paper);
+  --popover: oklch(0.15 0.03 260);
+  --popover-foreground: var(--paper);
+  --primary: var(--lime);
+  --primary-foreground: var(--ink);
+  --secondary: var(--navy);
+  --secondary-foreground: var(--paper);
+  --muted: oklch(0.2 0.03 260);
+  --muted-foreground: oklch(0.72 0.02 260);
+  --accent: var(--lime);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: var(--paper);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: var(--lime);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" 112;
+    letter-spacing: -0.035em;
+  }
+  ::selection { background: var(--lime); color: var(--ink); }
+}
+
+@utility font-wide { font-variation-settings: "wdth" 125; }
+@utility font-narrow { font-variation-settings: "wdth" 75; }
+@utility serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  font-variation-settings: normal;
+}
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+@utility surface-paper {
+  background-color: var(--paper);
+  color: var(--paper-ink);
+}
+@utility surface-ink {
+  background:
+    radial-gradient(80% 60% at 80% 0%, color-mix(in oklab, var(--navy) 90%, transparent), transparent 70%),
+    var(--ink);
+  color: var(--paper);
+}
+@utility glow-lime {
+  box-shadow: 0 0 0 1px var(--lime), 0 0 40px -8px color-mix(in oklab, var(--lime) 70%, transparent);
+}
+@utility tech-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--paper) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--paper) 6%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+@utility paper-grid {
+  background-image:
+    linear-gradient(var(--paper-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--paper) 45%, transparent);
+}
+
+/* Industry pattern treatments */
+@utility pat-stripes { background-image: repeating-linear-gradient(135deg, var(--lime) 0 2px, transparent 2px 14px); }
+@utility pat-dots { background-image: radial-gradient(var(--lime) 1.5px, transparent 1.6px); background-size: 16px 16px; }
+@utility pat-grid { background-image: linear-gradient(var(--lime) 1px, transparent 1px), linear-gradient(90deg, var(--lime) 1px, transparent 1px); background-size: 22px 22px; }
+@utility pat-rings { background-image: repeating-radial-gradient(circle at 30% 50%, var(--lime) 0 1px, transparent 1px 14px); }
+@utility pat-waves { background-image: repeating-linear-gradient(0deg, var(--lime) 0 1px, transparent 1px 10px), repeating-linear-gradient(90deg, transparent 0 30px, color-mix(in oklab, var(--lime) 40%, transparent) 30px 31px); }
+@utility pat-cross { background-image: repeating-linear-gradient(45deg, var(--lime) 0 1px, transparent 1px 12px), repeating-linear-gradient(-45deg, var(--lime) 0 1px, transparent 1px 12px); }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+@utility animate-marquee { animation: marquee 40s linear infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+@utility animate-blink { animation: blink 1s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee, .animate-blink { animation: none !important; }
+}
+
+/* Scoped homepage refinements; other pages retain their existing treatment. */
+.refined-pathways h2, .refined-process h3, .refined-industries .industry-title { letter-spacing: 0; }
+.pathway-seam { position: absolute; z-index: 20; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--lime); transform-origin: top; }
+.pathway-atmosphere { background: var(--lime); opacity: 0; transition: opacity 450ms ease; }
+.pathway-panel:is(:hover, :focus-visible) .pathway-atmosphere { opacity: 0.035; }
+.pathway-panel:focus-visible { box-shadow: inset 0 0 0 2px var(--lime); }
+.pathway-network { opacity: 0.45; transition: opacity 600ms ease; }
+.pathway-panel:is(:hover, :focus-visible) .pathway-network { opacity: 0.75; }
+.pathway-signal { opacity: 0.45; transition: opacity 450ms ease; }
+.pathway-panel:is(:hover, :focus-visible) .pathway-signal { opacity: 1; }
+.pathway-cta, .pathway-arrow { transition: transform 350ms ease; }
+.pathway-panel:is(:hover, :focus-visible) .pathway-arrow { transform: translate(3px, -3px); }
+.pathway-panel:is(:hover, :focus-visible) .pathway-cta { transform: translateY(-2px); }
+.process-connector { position: absolute; left: 20px; top: 20px; width: 1px; height: 100%; background: var(--border); overflow: hidden; }
+.process-stage:last-child .process-connector { display: none; }
+.process-connector-progress { display: block; width: 100%; height: 100%; background: var(--lime); transform-origin: top left; }
+.process-number { color: var(--muted-foreground); transition: color 400ms ease, border-color 400ms ease; }
+.process-stage[data-active="true"] .process-number { color: var(--lime); border-color: var(--lime); }
+.process-diagram { stroke-width: 1; transition: color 400ms ease; }
+.process-stage[data-active="true"] .process-diagram { color: var(--lime); }
+.industry-list::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 1px; background: var(--paper-line); }
+.industry-row::before { content: ""; position: absolute; inset: 0; background: var(--lime); opacity: 0; transition: opacity 400ms ease; }
+.industry-row > * { position: relative; }
+.industry-row:is(:hover, :focus-visible)::before { opacity: 0.09; }
+.industry-row:focus-visible { box-shadow: inset 3px 0 var(--lime); }
+.industry-title { transition: transform 400ms ease; }
+.industry-row:is(:hover, :focus-visible) .industry-title { transform: translateX(4px); }
+.industry-description { opacity: 0.8; transition: opacity 400ms ease; }
+.industry-row:is(:hover, :focus-visible) .industry-description { opacity: 1; }
+.industry-preview { color: var(--paper-muted); transition: color 400ms ease; }
+.industry-preview svg { stroke-width: 1.1; transition: transform 450ms ease; }
+.industry-row:is(:hover, :focus-visible) .industry-preview { color: var(--paper-ink); }
+.industry-row:is(:hover, :focus-visible) .industry-preview svg { transform: translateX(-3px); }
+.industry-arrow { transition: transform 400ms ease; }
+.industry-row:is(:hover, :focus-visible) .industry-arrow { transform: translate(2px, -2px); }
+.industry-row:is(:hover, :focus-visible) .industry-index { background: var(--lime); color: var(--paper-ink); }
+@media (min-width: 1024px) {
+  .process-connector { left: 20px; right: -20px; top: 20px; height: 1px; width: auto; }
+}
+@media (max-width: 1023px) {
+  .pathway-seam { left: 0; right: 0; top: 50%; bottom: auto; width: 100%; height: 1px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .refined-pathways *, .refined-process *, .refined-industries * { transition: none !important; }
+  .pathway-arrow, .pathway-cta, .industry-title, .industry-preview svg, .industry-arrow { transform: none !important; }
+}
